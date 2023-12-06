@@ -29,7 +29,7 @@ services:
       - ./mysql/initdb.d:/docker-entrypoint-initdb.d
     networks: 
       mynetwork:  
-        ipv4_address: 172.18.0.1
+        ipv4_address: 172.18.0.2
 
 networks: 
   mynetwork: 
