@@ -17,26 +17,16 @@ spec:
           image: sdvr/flown-test:latest
           ports:
             - containerPort: 80
-          env:
-            - name: DB_HOST
-              value: mysql-service
-            - name: DB_USER
-              valueFrom:
-                configMapKeyRef:
-                  name: web-configmap
-                  key: DB_USER
-            - name: DB_PW
-              valueFrom:
-                configMapKeyRef:
-                  name: web-configmap
-                  key: DB_PW
-            - name: DB_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: web-configmap
-                  key: DB_PORT
-            - name: DB_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: web-configmap
-                  key: DB_NAME
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flown-service
+spec:
+  selector:
+    app: web
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
