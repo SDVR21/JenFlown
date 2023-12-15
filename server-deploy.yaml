@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flown-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: flown-test
+          image: sdvr/flown-test:latst
+          ports:
+            - containerPort: 80
+          env:
+            - name: DB_HOST
+              value: mysql-service
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: web-configmap
+                  key: DB_USER
+            - name: DB_PW
+              valueFrom:
+                configMapKeyRef:
+                  name: web-configmap
+                  key: DB_PW
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: web-configmap
+                  key: DB_PORT
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: web-configmap
+                  key: DB_NAME

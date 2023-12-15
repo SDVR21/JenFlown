@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+spec:
+  selector:
+    app: mysql
+  ports:
+    - protocol: TCP
+      port: 3306
+      nodePort: 30000
+      targetPort: 3306
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flown-service
+spec:
+  selector:
+    app: web
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
