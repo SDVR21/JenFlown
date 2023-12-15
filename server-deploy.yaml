@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: flown-test
-          image: sdvr/flown-test:latst
+          image: sdvr/flown-test:latest
           ports:
             - containerPort: 80
           env:
