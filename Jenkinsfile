@@ -35,6 +35,7 @@ pipeline {
 			}
             steps{
                 sh "sed -i 's/flown-test:latest/flown-test:${env.BUILD_ID}/g' server-deploy.yaml"
+		sh "cat server-deploy.yaml"
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'server-deploy.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
             }
 	}
