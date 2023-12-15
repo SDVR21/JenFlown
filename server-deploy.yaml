@@ -2,35 +2,40 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: flown-deploy
+  labels:
+    app: flown
 spec:
   replicas: 3
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: web
+      app: flown
   template:
     metadata:
       labels:
-        app: web
-        tier: web
+        app: flown
+        tier: flown
     spec:
       containers:
         - name: flown-test
           image: sdvr/flown-test:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 5000
+          - containerPort: 5000
+            name: flown
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: flown-service
+  labels:
+    app: flown
 spec:
-  selector:
-    app: web
-    tier: web
   ports:
     - port: 80
       targetPort: 5000
+  selector:
+    app: flown
+    tier: flown
   type: LoadBalancer
