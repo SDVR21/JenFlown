@@ -22,7 +22,7 @@ spec:
         image: sdvr/flown-cicd:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 5000
+        - containerPort: 80
           name: flown
 ---
 apiVersion: v1
@@ -34,7 +34,7 @@ metadata:
 spec:
   ports:
     - port: 80
-      targetPort: 5000
+      targetPort: 80
   selector:
     app: flown
     tier: flown
