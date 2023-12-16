@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flown-deploy
+  name: flown
   labels:
     app: flown
 spec:
@@ -18,17 +18,17 @@ spec:
         tier: flown
     spec:
       containers:
-        - name: flown-test
-          image: sdvr/flown-test:latest
-          imagePullPolicy: Always
-          ports:
-          - containerPort: 5000
-            name: flown
+      - name: flown-test
+        image: sdvr/flown-test:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+          name: flown
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: flown-service
+  name: flown
   labels:
     app: flown
 spec:
