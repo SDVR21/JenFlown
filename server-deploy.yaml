@@ -24,17 +24,6 @@ spec:
         ports:
         - containerPort: 5000
           name: flown
-        env:
-        - name: DB_HOST
-          value: "34.22.100.35"
-        - name: DB_USER
-          value: "sungshin"
-        - name: DB_PW
-          value: "tjdtls!"
-        - name: DB_PORT
-          value: "3306"
-        - name: DB_NAME
-          value: "FLOWN"
 ---
 apiVersion: v1
 kind: Service
