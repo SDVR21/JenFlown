@@ -9,6 +9,6 @@ FROM node:16
 ENV NODE_ENV="production"
 COPY --from=builder /app /app
 WORKDIR /app
-ENV PORT 5000
-EXPOSE 5000
+ENV PORT 80
+EXPOSE 80
 CMD ["node", "app.js"]
