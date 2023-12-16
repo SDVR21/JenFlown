@@ -15,7 +15,7 @@ pipeline {
         stage("Build image") {
             steps {
                 script {
-                    myapp = docker.build("sdvr/flown-test:${env.BUILD_ID}")
+                    myapp = docker.build("sdvr/flown-cicd:${env.BUILD_ID}")
                 }
             }
         }
@@ -34,8 +34,8 @@ pipeline {
 				branch 'main'
 			}
             steps{
-                sh "sed -i 's/flown-test:latest/flown-test:${env.BUILD_ID}/g' server-deploy.yaml"
-                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'server-deploy.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+                sh "sed -i 's/flown-cicd:latest/flown-cicd:${env.BUILD_ID}/g' deploy.yaml"
+                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deploy.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
             }
 	}
     }    
