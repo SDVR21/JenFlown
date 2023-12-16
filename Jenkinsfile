@@ -4,7 +4,7 @@ pipeline {
         PROJECT_ID = 'flown-407116'
         CLUSTER_NAME = 'flown-k8s-2'
         LOCATION = 'asia-northeast3-a'
-        CREDENTIALS_ID = 'GKE'
+        CREDENTIALS_ID = '8d41b405-7762-433f-a20b-648fbb5fba81'
     }
     stages {
         stage("Checkout code") {
