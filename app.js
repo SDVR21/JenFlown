@@ -1,11 +1,15 @@
 const express = require('express');
 const app = express();
 const db = require('./config/database');
-require("dotenv").config();
 const layouts= require("express-ejs-layouts");
 
-app.use(express.static('public'));
+const dbHost = process.env.DB_HOST;
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PW;
+const dbPort = process.env.DB_PORT;
+const dbName = process.env.DB_NAME;
 
+app.use(express.static('public'));
 
 app.set('port', process.env.PORT || 80);
 
