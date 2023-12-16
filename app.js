@@ -3,11 +3,11 @@ const app = express();
 const db = require('./config/database');
 const layouts= require("express-ejs-layouts");
 
-const dbHost = process.env.DB_HOST;
-const dbUser = process.env.DB_USER;
-const dbPassword = process.env.DB_PW;
-const dbPort = process.env.DB_PORT;
-const dbName = process.env.DB_NAME;
+console.log(process.env.DB_HOST); // "example.com"
+console.log(process.env.DB_USER); // "myuser"
+console.log(process.env.DB_PW);
+console.log(process.env.DB_PORT); // "myuser"
+console.log(process.env.DB_NAME);
 
 app.use(express.static('public'));
 
