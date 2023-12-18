@@ -3,6 +3,10 @@ const app = express();
 const db = require('./config/database');
 const layouts= require("express-ejs-layouts");
 
+const os = require('os');
+const hostname = os.hostname();
+console.log('Hostname:', hostname);
+
 console.log(process.env.DB_HOST); // "example.com"
 console.log(process.env.DB_USER); // "myuser"
 console.log(process.env.DB_PW);
